@@ -1,65 +1,77 @@
-const { Client, LocalAuth, MessageMedia  } = require('whatsapp-web.js');
-const fs = require('fs');
-const qrcode = require('qrcode-terminal');
+// const { Client, LocalAuth, MessageMedia  } = require('whatsapp-web.js');
+// const fs = require('fs');
+// const qrcode = require('qrcode-terminal');
+console.log('node is running');
 
-
-const client = new Client({
-    authStrategy: new LocalAuth()
-});
-// console.log(client.on);
-client.on('qr', (qr) => {
-    console.log('QR Code Received:');
-    qrcode.generate(qr, { small: true });
-});
-
-client.on('ready', () => {
-    console.log('Client is ready!');
-});
-client.on('message', async (message) => {
-	if (message.body === 'hello') {
-		client.sendMessage(message.from,'Hello');
-	}
-});
-
-client.on('message', async (message) => {
-    if (message.body === 'meme') {
-      //get media from url
-      const media = await MessageMedia.fromUrl(
-        'https://user-images.githubusercontent.com/41937681/162612030-11575069-33c2-4df2-ab1b-3fb3cb06f4cf.png'
-        
-      );
-  
-      //replying with media
-      client.sendMessage(message.from, media, {
-        caption: 'meme',
-      });
-    }
-    else if(message.type === 'image' && message.body.startsWith('.sticker')){
-      const media = await message.downloadMedia();
-  
-      client.sendMessage(message.from , media,{ sendMediaAsSticker : true })
-    }
-    else if (message.body === 'hello') {
-      message.reply('Hiiiii');
-    }
-  });
-// Path to the image file
-// const imagePath = 'C:\Users\hardik.s\Desktop\covrize data/aboutimg5.png';
-
-// // Read the image file synchronously
-// const base64Image = fs.readFileSync(imagePath, { encoding: 'base64' });
-// client.on('message', async (msg) => {
-//     if (msg.body === 'send image') {
-//         const media = new MessageMedia('image/png', base64Image);
-//         await client.sendMessage(chatId, media, { caption: 'this is Demo' });
-//     }
+// const client = new Client({
+//     authStrategy: new LocalAuth()
 // });
- 
-client.on('error', (err) => {
-    console.error('An error occurred:', err);
-});
+// // console.log(client.on);
+// client.on('qr', (qr) => {
+//     console.log('QR Code Received:');
+//     qrcode.generate(qr, { small: true });
+// });
 
-client.initialize().catch(err => console.error('Initialization error:', err));
+// client.on('ready', () => {
+//     console.log('Client is ready!');
+// });
+// client.on('message', async (message) => {
+// 	if (message.body === 'hello') {
+// 		client.sendMessage(message.from,'Hello');
+// 	}
+// });
+
+// client.on('message', async (message) => {
+//     if (message.body === 'meme') {
+//       //get media from url
+//       const media = await MessageMedia.fromUrl(
+//         'https://user-images.githubusercontent.com/41937681/162612030-11575069-33c2-4df2-ab1b-3fb3cb06f4cf.png'
+        
+//       );
+  
+//       //replying with media
+//       client.sendMessage(message.from, media, {
+//         caption: 'meme',
+//       });
+//     }
+//     else if(message.type === 'image' && message.body.startsWith('.sticker')){
+//       const media = await message.downloadMedia();
+  
+//       client.sendMessage(message.from , media,{ sendMediaAsSticker : true })
+//     }
+//     else if (message.body === 'hello') {
+//       message.reply('Hiiiii');
+//     }
+//   });
+// // Path to the image file
+// // const imagePath = 'C:\Users\hardik.s\Desktop\covrize data/aboutimg5.png';
+
+// // // Read the image file synchronously
+// // const base64Image = fs.readFileSync(imagePath, { encoding: 'base64' });
+// // client.on('message', async (msg) => {
+// //     if (msg.body === 'send image') {
+// //         const media = new MessageMedia('image/png', base64Image);
+// //         await client.sendMessage(chatId, media, { caption: 'this is Demo' });
+// //     }
+// // });
+ 
+// client.on('error', (err) => {
+//     console.error('An error occurred:', err);
+// });
+
+// client.initialize().catch(err => console.error('Initialization error:', err));
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
